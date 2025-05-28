@@ -5,9 +5,10 @@ import productRouter from './routes/productRouter.js';
 import userRouter from './routes/userRouter.js';
 import jwt from 'jsonwebtoken';
 import orderRouter from './routes/orderRouter.js';
-
+import cors from 'cors';
 const app = express();
 
+app.use(cors())
 app.use(bodyParser.json())
 
 app.use(
@@ -43,9 +44,9 @@ mongoose.connect("mongodb+srv://kavindaappuhamy:kavindamongo98@cluster0.hkhcevt.
     console.log("Database connection failed");
 })
 
-app.use("/products", productRouter)
-app.use("/users", userRouter)
-app.use("/orders", orderRouter)
+app.use("/api/products", productRouter)
+app.use("/api/users", userRouter)
+app.use("/api/orders", orderRouter)
 
 app.listen(3000, 
     () => {
