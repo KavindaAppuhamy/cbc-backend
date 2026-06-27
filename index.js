@@ -41,11 +41,12 @@ app.use(
 )
 
 mongoose.connect(process.env.MONGODB_URL)
-.then(()=>{
+.then(() => {
     console.log("Connected to database");
-}).catch(() => {
-    console.log("Database connection failed");
 })
+.catch((error) => {
+    console.error("Database connection failed:", error);
+});
 
 app.use("/api/products", productRouter)
 app.use("/api/users", userRouter)
