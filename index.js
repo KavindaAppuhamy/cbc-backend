@@ -11,7 +11,7 @@ import reviewRouter from './routes/reviewRouter.js';
 dotenv.config();
 const app = express();
 
-app.use(cors())
+app.use(cors({ origin: true, credentials: true }))
 app.use(bodyParser.json())
 
 app.use(
@@ -53,10 +53,11 @@ app.use("/api/users", userRouter)
 app.use("/api/orders", orderRouter)
 app.use("/api/reviews", reviewRouter);
 
-app.listen(3000, 
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, 
     () => {
-        console.log('Server is running on port 3000');
+        console.log(`Server is running on port ${PORT}`);
     }
 );
 
-//mongodb+srv://kavindaappuhamy:kavindamongo98@cluster0.hkhcevt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0

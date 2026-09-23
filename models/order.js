@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { getProducts } from "../controllers/productController.js";
 
 const orderSchema = mongoose.Schema({
     orderId : {
